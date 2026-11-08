@@ -5,9 +5,11 @@ plugins {
 
 android {
     namespace = "com.tensei.ytxtube"
-    // Fork: compileSdk 37 does not exist in the public SDK repo (latest is 36);
+    // Fork: compileSdk 37 needs the android-37.2 platform installed
+    // (sdkmanager "platforms;android-37.2"), copied to a folder named
+    // "android-37" — AGP 9.1.0 only looks up the exact name "android-37".
     // targetSdk was already 36, so this changes nothing at runtime.
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         // Fork 2.2.1-fix1: new applicationId so this fixed build installs
