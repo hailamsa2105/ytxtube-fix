@@ -19,8 +19,8 @@ jobs:
 
       - name: Install Gradle 9.7.1
         run: |
-          curl -sL https://services.gradle.org/distributions/gradle-9.7.1-bin.zip -o /tmp/gradle.zip
-          unzip -q /tmp/gradle.zip -d $HOME
+          curl -sL --fail --retry 5 --retry-delay 10 --retry-all-errors https://services.gradle.org/distributions/gradle-9.7.1-bin.zip -o /tmp/gradle.zip || curl -sL --fail --retry 5 --retry-delay 10 --retry-all-errors https://downloads.gradle-dn.com/distributions/gradle-9.7.1-bin.zip -o /tmp/gradle.zip
+          unzip -q -o /tmp/gradle.zip -d $HOME
           echo "$HOME/gradle-9.7.1/bin" >> $GITHUB_PATH
 
       - name: Set up Android SDK
